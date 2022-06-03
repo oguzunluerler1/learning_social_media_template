@@ -102,6 +102,7 @@ class _homeState extends State<home> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              
               AvatarAndUserName(resim, index),
               PostedImage(randomResim),
               DescrpitonAndLikeButton(index)
@@ -130,9 +131,16 @@ class _homeState extends State<home> {
       child: Container (
         width: double.infinity, 
         height: double.infinity,  
-        child: Image.network(randomResim,fit: BoxFit.cover,),
-      )
-    );
+        child: Image.network(
+          randomResim,
+          fit: BoxFit.cover,
+          loadingBuilder: (context, child, loadingProgress) {
+            if (loadingProgress == null) return child;
+            return CircularProgressIndicator();
+          },
+        )
+        ),
+      );
   }
   Row DescrpitonAndLikeButton(int index) {
     return Row(
