@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:togla_pratik/Screens/home.dart';
+import 'package:togla_pratik/Screens/profile.dart';
 import 'package:togla_pratik/Screens/search.dart';
 
 void main() => runApp(MyApp()); 
@@ -14,7 +15,7 @@ class _MyAppState extends State<MyApp> {
   List<Widget> Pages = [
     home(),    
     Search(),    
-    Center(child: Text("üç"),)
+    UserProfile()
   ];
   @override
   Widget build(BuildContext context) {
