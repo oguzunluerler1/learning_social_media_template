@@ -54,12 +54,38 @@ class _homeState extends State<home> {
       });
       return Future.delayed(Duration(milliseconds: 400));
     },
-      child: ListView.builder(
-        physics: BouncingScrollPhysics(),
-        itemCount: LikedUser.length,
-        itemBuilder: (BuildContext context, int index) {
-          return post(index);
-        },
+      child: Column(
+        children: [
+          Container(
+            height: 90,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: LikedUser.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.blue,
+                    radius: 40,
+                    child: CircleAvatar(
+                      backgroundImage: NetworkImage("https://randomuser.me/api/portraits/men/$index.jpg"),
+                      radius: 38,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              physics: BouncingScrollPhysics(),
+              itemCount: LikedUser.length,
+              itemBuilder: (BuildContext context, int index) {
+                return post(index);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
