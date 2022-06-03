@@ -1,4 +1,4 @@
-# togla_pratik
+# social media learning trial app
 
 A new Flutter project.
 

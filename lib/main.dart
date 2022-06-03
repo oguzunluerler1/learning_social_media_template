@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:togla_pratik/Screens/home.dart';
 import 'package:togla_pratik/Screens/search.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MyApp()); 
 
 class MyApp extends StatefulWidget {
   @override
