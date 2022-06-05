@@ -6,6 +6,7 @@ import 'package:togla_pratik/models/user_post.dart';
 class home extends StatefulWidget {
   const home({ Key? key }) : super(key: key);
 
+
   @override
   State<home> createState() => _homeState();
 }
@@ -18,14 +19,15 @@ class _homeState extends State<home> {
     return val*MediaQuery.of(context).size.width;
   }
   List<UserPost> LikedUser = [
-    UserPost(name: "abc", liked: 0),
+    UserPost(name: "Türker Oğuz Ünlüerlerd", liked: 0, desc: "Bu manzara süper ötesi"),
     UserPost(name: "abc222", liked: 2),
     UserPost(name: "abce", liked: 0),
-    UserPost(name: "sdd", liked: 4),
+    UserPost(name: "sdd", liked: 4, desc: "aman tanrım"),
     UserPost(name: "retr", liked: 3),
-    UserPost(name: "12", liked: 4),
+    UserPost(name: "12", liked: 4, desc: "coca cola hayattır"),
   ];
   Color bColor = Colors.brown;
+  Color tColor = Colors.white;
   late int a,r,g,b;
   Random rnd = Random();
   @override
@@ -33,12 +35,28 @@ class _homeState extends State<home> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: RenkDegistir,
-        icon: Icon(Icons.arrow_back, color: bColor,)),
+        icon: Icon(Icons.backspace_sharp, color: bColor,)),
         centerTitle: true,
-        title: Text("HOME SCREEN"),
+        title: Text("HOME SCREEN",
+          style: TextStyle(color: tColor),
+        ),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.settings_applications_outlined)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.wifi_lock_sharp))
+          IconButton(onPressed: () {}, icon: Icon(Icons.abc)),
+          
+          IconButton(
+            onPressed: () {
+            tColor = Colors.red;
+            setState(() {
+              
+            });
+            
+          }, icon: Icon(Icons.settings_applications_outlined)),
+          IconButton(onPressed: () {
+            tColor = Colors.white;
+            setState(() {
+              
+            });
+          }, icon: Icon(Icons.wifi_lock_sharp))
         ],
       ),
       body: bodyMethod(),
@@ -142,13 +160,13 @@ class _homeState extends State<home> {
         ),
       );
   }
-  Row DescrpitonAndLikeButton(int index) {
-    return Row(
+  Column DescrpitonAndLikeButton(int index) {
+    return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Padding(
           padding: const EdgeInsets.all(4.0),
-          child: Text("Bu manzara harika"),
+          child: Center(child: Text(LikedUser[index].desc)),
         ),
         ElevatedButton.icon(onPressed: () {
           setState(() {
@@ -160,11 +178,11 @@ class _homeState extends State<home> {
   }
   void RenkDegistir() {
     r = rnd.nextInt(255);
-          g = rnd.nextInt(255);
-          b = rnd.nextInt(255);
-          bColor = Color.fromARGB(a=255,r,g,b);
-          setState(() {
+    g = rnd.nextInt(255);
+    b = rnd.nextInt(255);
+    bColor = Color.fromARGB(a=255,r,g,b);
+    setState(() {
             
-          });
+    });
   }
-}
+} 

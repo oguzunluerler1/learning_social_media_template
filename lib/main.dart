@@ -3,7 +3,7 @@ import 'package:togla_pratik/Screens/home.dart';
 import 'package:togla_pratik/Screens/profile.dart';
 import 'package:togla_pratik/Screens/search.dart';
 
-void main() => runApp(MyApp()); 
+void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
@@ -11,30 +11,36 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int selectedIndex = 0;  
+  int selectedIndex = 0;
   List<Widget> Pages = [
-    home(),    
-    Search(),    
+    home(),
+    Search(),
     UserProfile()
   ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Material App',
+      title: 'Instagram Benzeri Bişey',
       home: Scaffold(
         body: Pages[selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
+          //showSelectedLabels: false,
+          showUnselectedLabels: false,
+          selectedLabelStyle: TextStyle(
+           decorationStyle: TextDecorationStyle.dashed,
+           decorationThickness: 2.85,
+           decoration: TextDecoration.underline, 
+          ),
           fixedColor: Colors.brown,
-          unselectedItemColor: Color.fromARGB(219, 168, 143, 143),
-          elevation: 8,
+          unselectedItemColor: Color.fromARGB(219, 211, 198, 198),           elevation: 20,
           iconSize: 34,
           type: BottomNavigationBarType.fixed,
           unselectedFontSize: 10,
-          selectedFontSize: 13,
+          selectedFontSize: 15,
+          backgroundColor: Colors.orange,
           unselectedIconTheme: IconThemeData(size: 25),
+          selectedIconTheme: IconThemeData(size: 40),
           currentIndex: selectedIndex,
           onTap: (index) {
             selectedIndex = index;
@@ -43,9 +49,9 @@ class _MyAppState extends State<MyApp> {
             });
           },
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "HOME"),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: "SEARCH"),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: "PROFILE"),
+            BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "HOME"),
+            BottomNavigationBarItem(icon: Icon(Icons.search_rounded), label: "SEARCH"),
+            BottomNavigationBarItem(icon: Icon(Icons.person_pin), label: "PROFILE"),
           ]
         ),
       ),
